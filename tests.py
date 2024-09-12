@@ -34,25 +34,25 @@ class Cilveks:
 
 
 class Sieviete(Cilveks):
-    def __init__(self, name, sex, hair_color, age = 0):
-        super().__init__(name, age, sex)
+    def __init__(self, name, hair_color, age = 0):
+        super().__init__(name, age, "s")
         self.matu_krasa = hair_color
-        self.bazarsPaSevi()
+        # self.bazarsPaSevi()
     
     def bazarsPaSevi(self):
         super().bazarsPaSevi()
         print("Mana matu krāsa ir", self.matu_krasa)
 
 
-persona = Cilveks("Krišs", 18, "v")
-persona1 = Cilveks("Rada", 16, "s")
-persona2 = Sieviete("Baba", "s", "Melni", 25 )
-persona2.mainit_vardu("Anna")
-persona.mainit_dzimumu("")
+# persona = Cilveks("Krišs", 18, "v")
+# persona1 = Cilveks("Rada", 16, "s")
+# persona2 = Sieviete("Baba", "Melni", 25 )
+# persona.mainit_vardu("Anna")
+# persona.mainit_dzimumu("")
 
 
 
-persona.dzimene()
+# persona.dzimene()
 
-persona2.bazarsPaSevi()
+# persona2.bazarsPaSevi()
 
