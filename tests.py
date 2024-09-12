@@ -5,11 +5,6 @@ class Cilveks:
         self.sex=dzimums
     def dzimene(self):
         self.age +=1  
-    def MainitVardu(self):
-        if self.name == "Krišs":
-            vards = "Pritkovs"
-        else:
-            vards = self.name
 
     def BazarsPaSevi(self):
         if self.sex == "v":
