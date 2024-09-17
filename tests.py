@@ -26,7 +26,7 @@ class Cilveks:
         else:
             dzimums = self.sex
 
-        print("Sveiki, mani sauc {} man ir {} gadi un es esmu {}".format(self.name, self.age, dzimums ) )
+        return "Sveiki, mani sauc {} man ir {} gadi un es esmu {}".format(self.name, self.age, dzimums ) 
 
     def __del__(self):
         print("atā")
