@@ -42,6 +42,10 @@ dzimums_entry = ttk.Entry(frame, textvariable=dzimums)
 dzimums_entry.grid(column=1, row=2, **options)
 dzimums_entry.focus()
 
+def dzimsanasDiena_button_clicked():
+    dzimene = vecums 
+    vecums += 1
+
 
 
 
