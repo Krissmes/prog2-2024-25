@@ -1,6 +1,6 @@
 from tests import Cilveks, Sieviete
 import tkinter as tk
-from tkinter import ttk
+from tkinter import ttk, END
 
 #cilvēki
 visi_cilveki = []
@@ -30,7 +30,7 @@ vards_entry.focus()
 
 # vecums entry
 
-vecums = tk.StringVar()
+vecums = tk.IntVar()
 vecums_entry = ttk.Entry(frame, textvariable=vecums)
 vecums_entry.grid(column=1, row=1, **options)
 vecums_entry.focus()
@@ -42,15 +42,30 @@ dzimums_entry = ttk.Entry(frame, textvariable=dzimums)
 dzimums_entry.grid(column=1, row=2, **options)
 dzimums_entry.focus()
 
-def dzimsanasDiena_button_clicked(): 
+
+
+
+def dzimsanas_diena(): 
+    jaunais_teksts=""
+    for izveletais in listbox.curselection():
+
+        visi_cilveki[izveletais].dzimene()
+        jaunais_teksts += visi_cilveki[izveletais].bazarsPaSevi() + "\n"
+
+    result_label.config(text=jaunais_teksts)
+    nomainit_sarakstu()
     "vajag ielikt funkciju vecums plus 1"
 
 
-convert_dzimsanasDiena_button = ttk.Button(frame, text='dzimsanas diena')
-convert_dzimsanasDiena_button.grid(column=6, row=0, sticky='w', **options)
-convert_dzimsanasDiena_button.configure(command=dzimsanasDiena_button_clicked)
+dzim_diena_button = ttk.Button(frame, text='dzimsanas diena')
+dzim_diena_button.grid(column=6, row=2, sticky='w', **options)
+dzim_diena_button.configure(command=dzimsanas_diena)
 
-
+# listbox saraksta atjaunosana
+def nomainit_sarakstu():
+    listbox.delete(0,END)
+    for cilveks in visi_cilveki:
+        listbox.insert("end","{},{},{}".format(cilveks.name, cilveks.sex, cilveks.age))   
 
 
 def razot_button_clikced():
@@ -60,7 +75,20 @@ def razot_button_clikced():
     
     visi_cilveki.append(Cilveks(cilveka_vards, cilveka_vecums, cilveka_dzimums))
     result_label.config(text=visi_cilveki[-1].bazarsPaSevi())
+    nomainit_sarakstu()
+    # listbox.insert("end","{},{},{}".format(cilveka_vards, cilveka_dzimums, cilveka_vecums))
 
+
+saturs = tk.Variable(value=tuple(visi_cilveki))
+
+listbox = tk.Listbox(
+    root,
+    listvariable = saturs,
+    height=6,
+    selectmode=tk.EXTENDED    
+)
+
+listbox.grid(row = 4, columnspan=3, **options)
 
 def convert_button_clicked():
     rezultats = vards.get(), vecums.get(), dzimums.get()
