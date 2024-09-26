@@ -42,9 +42,13 @@ dzimums_entry = ttk.Entry(frame, textvariable=dzimums)
 dzimums_entry.grid(column=1, row=2, **options)
 dzimums_entry.focus()
 
-def dzimsanasDiena_button_clicked():
-    dzimene = vecums 
-    vecums += 1
+def dzimsanasDiena_button_clicked(): 
+    "vajag ielikt funkciju vecums plus 1"
+
+
+convert_dzimsanasDiena_button = ttk.Button(frame, text='dzimsanas diena')
+convert_dzimsanasDiena_button.grid(column=6, row=0, sticky='w', **options)
+convert_dzimsanasDiena_button.configure(command=dzimsanasDiena_button_clicked)
 
 
 
