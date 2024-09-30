@@ -42,8 +42,29 @@ dzimums_entry = ttk.Entry(frame, textvariable=dzimums)
 dzimums_entry.grid(column=1, row=2, **options)
 dzimums_entry.focus()
 
+# jaunais vards entry
+
+mainit_vardu = tk.StringVar()
+mainit_vardu_entry = ttk.Entry(frame, textvariable=mainit_vardu)
+mainit_vardu_entry.grid(column=1, row=3, **options)
+mainit_vardu_entry.focus()
+
+def varda_maina():
+    jaunaisVards = mainit_vardu.get()  # Retrieve the new name first
+    if not jaunaisVards:
+        result_label.config(text="Lūdzu, ievadiet jauno vārdu.")
+        return
+
+    for izveletais in listbox.curselection():
+        visi_cilveki[izveletais].mainit_vardu(jaunaisVards)
+    
+    result_label.config(text="Vārds mainīts veiksmīgi.")
+    nomainit_sarakstu()
 
 
+mainit_vardu_button = ttk.Button(frame, text='jaunais vards')
+mainit_vardu_button.grid(column=6, row=6, sticky='w', **options)
+mainit_vardu_button.configure(command=varda_maina)
 
 def dzimsanas_diena(): 
     jaunais_teksts=""
@@ -55,6 +76,7 @@ def dzimsanas_diena():
     result_label.config(text=jaunais_teksts)
     nomainit_sarakstu()
     "vajag ielikt funkciju vecums plus 1"
+
 
 
 dzim_diena_button = ttk.Button(frame, text='dzimsanas diena')

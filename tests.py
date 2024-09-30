@@ -3,7 +3,10 @@ class Cilveks:
         self.name=vards
         self.age=vecums
         self.sex=dzimums
+    def jVards(self, jaunsVards):
+        self.name= jaunsVards
     def dzimene(self):
+ 
         self.age +=1  
     def mainit_vardu(self, jaunais_vards):
         self.name = jaunais_vards
